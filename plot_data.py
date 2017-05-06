@@ -41,5 +41,7 @@ for n in unique_flight_numbers:
             print(toplota)
             plt.plot_date(toplota[:,0],toplota[:,1]+np.random.rand()*10,linestyle='solid')
             legend.append('{} {}'.format(n,t))
-plt.legend(legend)            
+#plt.legend(legend,loc='center left',bbox_to_anchor=(1.0,0.5))
+plt.legend(legend,loc='center left')
+plt.savefig('graph.png')
 plt.show()
