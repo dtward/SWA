@@ -12,8 +12,20 @@ arrive_airport_string = 'BUF'
 depart_date_string = '6-30'
 passengers_string = '2'
 
-browser = webdriver.PhantomJS()
-browser.get("https://www.southwest.com/")
+service_args=[]
+# this may help with my current_url being  u'about:blank'
+#service_args = ['--ignore-ssl-errors=true','--ssl-protocol=tlsv1','--proxy-type=None','--load-images=false']
+
+# a minimal subset that works is the following
+browser = webdriver.PhantomJS(service_args = ['--ssl-protocol=any'])
+browser.get('https://www.southwest.com/')
+#print(browser.current_url)
+# okay this works!!!!
+
+
+with open('tmp.png','wb') as f:
+    f.write( browser.get_screenshot_as_png() )
+print('screenshot written')
 
 depart_airport = browser.find_element_by_id("air-city-departure")
 depart_airport.send_keys(depart_airport_string)
