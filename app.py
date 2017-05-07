@@ -124,3 +124,4 @@ with open(data_name,'at') as f:
                 count += 1
 
 
+import plot_data
